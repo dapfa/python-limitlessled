@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from limitlessled import MIN_WAIT, REPS
 from limitlessled.group.rgbw import RgbwGroup, RGBW, BRIDGE_LED
 from limitlessled.group.wrgb import WrgbGroup, WRGB
+from limitlessled.group.rgb import RgbGroup, RGB
 from limitlessled.group.rgbww import RgbwwGroup, RGBWW
 from limitlessled.group.white import WhiteGroup, WHITE
 from limitlessled.group.dimmer import DimmerGroup, DIMMER
@@ -51,6 +52,8 @@ def group_factory(bridge, number, name, led_type):
         return DimmerGroup(bridge, number, name)
     elif led_type == WRGB:
         return WrgbGroup(bridge, number, name)
+    elif led_type == RGB:
+        return RgbGroup(bridge, number, name)
     else:
         raise ValueError('Invalid LED type: %s', led_type)
 
