@@ -23,14 +23,13 @@ logger = logging.getLogger()
 
 logger.info("Setup group")
 bridge = Bridge('192.168.178.232')
-#gartenhaus = bridge.add_group(1, 'gartenhaus', RGB)
+gartenhaus = bridge.add_group(1, 'gartenhaus', RGB)
 
-#pipeline = Pipeline().on()
-#.wait(4).off()
-#pipeline.callback(my_function)
+pipeline = Pipeline().wait(10).on().wait(4).off()
+pipeline.callback(my_function)
 
-#gartenhaus.enqueue(pipeline)
-#logger.info("Switch on group %s" , gartenhaus)
+gartenhaus.enqueue(pipeline)
+logger.info("Switch on group %s" , gartenhaus)
 
 while terminate == False:
     time.sleep(1)
