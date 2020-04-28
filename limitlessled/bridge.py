@@ -295,10 +295,10 @@ class Bridge(object):
             ready = select.select([self._socket], [], [], timeout)
             if ready[0]:
                 try:
-                    response = bytearray(12)
-                    self._socket.recv_into(response)
+                    response = bytearray(50)
+                    num = self._socket.recv_into(response)
 
-                    if response[:5] == bytearray(KEEP_ALIVE_RESPONSE_PREAMBLE):
+                    if num == 12 and response[:5] == bytearray(KEEP_ALIVE_RESPONSE_PREAMBLE):
                         send_next_keep_alive_at = need_response_by
                 except (socket.error, socket.timeout):
                     with self._lock:
