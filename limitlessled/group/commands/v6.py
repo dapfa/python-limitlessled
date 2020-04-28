@@ -375,84 +375,21 @@ class CommandSetRgbV6(CommandSetV6):
         Build command for turning the led on.
         :return: The command.
         """
-        return self._build_command(0x03, 0x01)
+        return self._build_command(0x02, 0x09)
 
     def off(self):
         """
         Build command for turning the led off.
         :return: The command.
         """
-        return self._build_command(0x03, 0x02)
-
-    def night_light(self):
-        """
-        Build command for turning the led into night light mode.
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x06)
+        return self._build_command(0x02, 0x0a)
 
     def white(self):
         """
         Build command for turning the led into white mode.
         :return: The command.
         """
-        return self._build_command(0x03, 0x05)
-
-    def white_up(self):
-        """
-        Build command for turning the white channel up
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x03)
-
-    def white_down(self):
-        """
-        Build command for turning the white channel doen
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x04)
-
-    def red_up(self):
-        """
-        Build command for turning the red channel up
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x05)
-
-    def red_down(self):
-        """
-        Build command for turning the red channel doen
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x06)
-
-    def green_up(self):
-        """
-        Build command for turning the green channel up
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x07)
-
-    def green_down(self):
-        """
-        Build command for turning the green channel doen
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x08)
-
-    def blue_up(self):
-        """
-        Build command for turning the blue channel up
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x09)
-
-    def blue_down(self):
-        """
-        Build command for turning the blue channel doen
-        :return: The command.
-        """
-        return self._build_command(0x03, 0x0A)
+        return self._build_command(0x02, 0x05)
 
     def hue(self, hue):
         """

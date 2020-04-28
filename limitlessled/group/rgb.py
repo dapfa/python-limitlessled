@@ -14,15 +14,15 @@ RGB_WHITE = Color(255, 255, 255)
 
 
 class RgbGroup(Group):
-    """ RGBW LimitlessLED group. """
+    """ RGB LimitlessLED group. """
 
     def __init__(self, bridge, number, name, led_type=RGB):
-        """ Initialize RGBW group.
+        """ Initialize RGB group.
 
         :param bridge: Associated bridge.
         :param number: Group number (1-4).
         :param name: Group name.
-        :param led_type: The type of the led. (RGBW or BRIDGE_LED)
+        :param led_type: The type of the led. (RGB or BRIDGE_LED)
         """
         super().__init__(bridge, number, name, led_type)
         self._hue = 0
@@ -54,11 +54,6 @@ class RgbGroup(Group):
         """ Set color to white. """
         self._color = RGB_WHITE
         cmd = self.command_set.white()
-        self.send(cmd)
-
-    def night_light(self):
-        """ Set night light mode. """
-        cmd = self.command_set.night_light()
         self.send(cmd)
 
     @property
