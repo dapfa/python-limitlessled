@@ -9,22 +9,20 @@ from limitlessled.util import steps, hue_of_color, saturation_of_color
 
 
 RGB = 'rgb'
-BRIDGE_LED = 'bridge-led'
 RGB_WHITE = Color(255, 255, 255)
 
 
 class RgbGroup(Group):
     """ RGB LimitlessLED group. """
 
-    def __init__(self, bridge, number, name, led_type=RGB):
+    def __init__(self, bridge, number, name):
         """ Initialize RGB group.
 
         :param bridge: Associated bridge.
         :param number: Group number (1-4).
         :param name: Group name.
-        :param led_type: The type of the led. (RGB or BRIDGE_LED)
         """
-        super().__init__(bridge, number, name, led_type)
+        super().__init__(bridge, number, name, RGB)
         self._hue = 0
         self._color = RGB_WHITE
 
@@ -73,8 +71,13 @@ class RgbGroup(Group):
         if brightness < 0 or brightness > 1:
             raise ValueError("Brightness must be a percentage "
                              "represented as decimal 0-1.0")
+
+        if brightness > self._brightness:
+            cmd = self.command_set.brighter()
+        else:
+            cmd = self.command_set.dimmer()
+
         self._brightness = brightness
-        cmd = self.command_set.brightness(brightness)
         self.send(cmd)
 
     @property

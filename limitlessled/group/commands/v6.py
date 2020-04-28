@@ -399,13 +399,20 @@ class CommandSetRgbV6(CommandSetV6):
         """
         return self._build_command(0x01, self.convert_hue(hue, True))
 
-    def brightness(self, brightness):
+    def dimmer(self):
         """
-        Build command for setting the brightness of the led.
-        :param brightness: Value to set (0.0-1.0).
+        Build command for setting the brightness one step dimmer.
         :return: The command.
         """
-        return self._build_command(0x02, self.convert_brightness(brightness))
+        return self._build_command(0x02, 0x02) 
+
+    def brighter(self):
+        """
+        Build command for setting the brightness one step brighter.
+        :return: The command.
+        """
+        return self._build_command(0x02, 0x01)
+
 
 class CommandSetWrgbV6(CommandSetV6):
     """ Command set for WRGB led light connected to wifi bridge v6. """
