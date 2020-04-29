@@ -368,7 +368,7 @@ class CommandSetRgbV6(CommandSetV6):
         Initializes the command set.
         :param group_number: The group number.
         """
-        super().__init__(group_number, self.REMOTE_STYLE)
+        super().__init__(group_number, self.REMOTE_STYLE, 8)
 
     def on(self):
         """
@@ -389,7 +389,8 @@ class CommandSetRgbV6(CommandSetV6):
         Build command for turning the led into white mode.
         :return: The command.
         """
-        return self._build_command(0x02, 0x05)
+
+        return self._build_command(0x02, 0x06)
 
     def hue(self, hue):
         """
